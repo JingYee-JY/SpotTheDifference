@@ -8,29 +8,48 @@
     <title>Spot the Difference</title>
 
 
-    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/layout.css">
+    <link rel="stylesheet" href="./css/game.css">
 
 
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Electrolize">
+    <link rel="stylesheet" 
+    href="https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@300;400;900&display=swap">
 </head>
 
 <body>
 
-    <div id="main_screen"  w3-include-html="./pages/main_screen.html"></div>
-    <div id="result_screen" class="hide" w3-include-html="./pages/result.html"></div>
+    <div id="main_screen" class="startPage" w3-include-html="./pages/main_screen.html"></div>
+    
+    <div id="instruction_screen" class="instructionPage hide" w3-include-html="./pages/instruction.html"></div>
+    
+    <div class="gamePage">
+        <div class="top">
+            <div class="question">
+                <p class="question-count">0/0</p>
+            </div>
+            <div class="score">
+                <p class="point1"><img class="image" src="./img/timeLogo.png"></p>
+                <p class="score-count"><b>120s</b></p>
+            </div>
+        </div>
 
-    <br>
-    <div id="question">
-        <span>1/5</span>
+        <img class="originalTop" src="./img/original.png" alt="">
+        <img class="original" alt="">
+    
+        <div id="title" class="text">
+            <span>Spot the differences</span>
+        </div>
+
+        <canvas width="300" height="200" id="play_area"> </canvas>
+    
     </div>
 
-    <br>
-    <canvas width="450" height="650" id="play_area"> </canvas>
+    <div id="result_screen" class=" finalPage hide" w3-include-html="./pages/result.html"></div>
 
-    <div id="title">
-        <span>Find 1 difference</span>
-    </div>
+    <img class="rotate" src="./img/rotate.png">
+
+    <script src="js/confetti.js"></script>
+    <script src="js/index.js"></script>
 
 </body>
 
@@ -44,6 +63,6 @@
 
 
 <script type="text/javascript" src="https://rawgithub.com/craftyjs/Crafty/release/dist/crafty.js"></script>
-<script src="js/index.js"></script>
+
 
 </html>

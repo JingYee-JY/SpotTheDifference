@@ -1,6 +1,16 @@
+const timerCount = document.querySelector(".score-count");
 const canvas = document.getElementById("play_area");
+const originalImage = document.querySelector(".original");
+const question = document.querySelector(".question-count");
+
+const resultScreen = document.getElementById("result_screen");
 
 const ctx = canvas.getContext('2d');
+
+var differencePlayerFound = [];
+var tempo = [];
+var time;
+var timer;
 
 window.onload = init;
 
@@ -8,84 +18,133 @@ window.onload = init;
     // the code to be called when the dom has loaded
     // #document has its nodes
     const startButton = document.getElementById("start_button");
-    const startScreen = document.getElementById("main_screen");
+    const startGameButton = document.getElementById("start_game_button");
     const againButton = document.getElementById("again_button");
-    const resultScreen = document.getElementById("result_screen");
     const homeButton = document.getElementById("home_button");
+
+    const startScreen = document.getElementById("main_screen");
+    const instructionScreen = document.getElementById("instruction_screen");
+    const resultScreen = document.getElementById("result_screen");
     
     startButton.addEventListener("click", function (){
         startScreen.classList.add("hide");
+        instructionScreen.classList.remove("hide")
+        score = 0;
+        time = 120
+        timerCount.innerHTML = `${time}s`;
+        timer = setInterval(updateTime, 1000)
+        loadImage();
     })
+
+    startGameButton.addEventListener("click", function (){
+        instructionScreen.classList.add("hide")
+    })
+
     againButton.addEventListener("click", function (){
         resultScreen.classList.add("hide")
-        questionCount = 1;
-        console.log(questionCount)
-        reset();
+        tempo = [];
+        startScreen.classList.remove("hide");
     })
+
     homeButton.addEventListener("click", function(){
         location.assign('https://gimme.sg/activations/dementia/');
     })
   }
 
-  var tempo = [];
 const differences = [
-
-    // WATCH
-    {image1: {x: 220, y: 140, radius: 50},
-        image2: {x: 220, y: 445, radius: 50},
-        width: 220, height: 750, imageURL: "css/images/Objects/Image2.png"},
+    //BUS FRONT VIEW
+    {images: [
+            {
+                // DIFFERENCES 1
+                image1: {x: 80, y: 120, radius: 60}
+            },   
+            {
+                // DIFFERENCES 2
+                image1: {x: 110, y: 20, radius: 60}
+            }
+            
+            ],
+        width: 300, height: 200, imageURL: "./img/difference1.png", original:"./img/original1.png"},
+        
     
-    // PLANT
-    {image1: {x: 220, y: 250, radius: 50},
-        image2: {x: 220, y: 550, radius: 50},
-        width: 220, height: 600, imageURL: "css/images/Objects/Image1.png"},
-
-    // BOOK
-    {image1: {x: 230, y: 80, radius: 50},
-        image2: {x: 230, y: 380, radius: 50},
-        width: 220, height: 650, imageURL: "css/images/Objects/Image3.png"},
-
-    // TEA
-    {image1: {x: 170, y: 120, radius: 50},
-        image2: {x: 170, y: 420, radius: 50},
-        width: 250, height: 600, imageURL: "css/images/Objects/Image4.png"},
-
-    // Dress
-    {image1: {x: 220, y: 125, radius: 50},
-        image2: {x: 220, y: 425, radius: 50},
-        width: 200, height: 600, imageURL: "css/images/Objects/Image5.png"},
+    // FLAG
+    {images: [
+        {
+            // DIFFERENCES 1
+            image1: {x: 180, y: 100, radius: 60}
+        },   
+        {
+            // DIFFERENCES 2
+            image1: {x: 60, y: 50, radius: 60}
+        }
+        
+        ],
+    width: 300, height: 200, imageURL: "./img/difference2.png", original:"./img/original2.png"},
     
-    // WATCH
-    {image1: {x: 220, y: 215, radius: 50},
-        image2: {x: 220, y: 515, radius: 50},
-        width: 220, height: 600, imageURL: "css/images/Objects/Image7.png"},
+    // PLAYGROUND
+    {images: [
+        {
+            // DIFFERENCES 1
+            image1: {x: 160, y: 130, radius: 60}
+        },   
+        {
+            // DIFFERENCES 2
+            image1: {x: 150, y: 60, radius: 60}
+        }
+        
+        ],
+    width: 300, height: 200, imageURL: "./img/difference3.png", original:"./img/original3.png"},
     
-    // PLANT
-    {image1: {x: 245, y: 205, radius: 50},
-        image2: {x: 245, y: 505, radius: 50},
-        width: 220, height: 600, imageURL: "css/images/Objects/Image6.png"},
-
-    // BOOK
-    {image1: {x: 300, y: 100, radius: 50},
-        image2: {x: 300, y: 400, radius: 50},
-        width: 220, height: 650, imageURL: "css/images/Objects/Image8.png"},
-
-    // TEA
-    {image1: {x: 250, y: 165, radius: 50},
-        image2: {x: 250, y: 465, radius: 50},
-        width: 250, height: 600, imageURL: "css/images/Objects/Image9.png"},
-
-    // Dress
-    {image1: {x: 300, y: 50, radius: 50},
-        image2: {x: 300, y: 350, radius: 50},
-        width: 200, height: 600, imageURL: "css/images/Objects/Image10.png"}
+    // MRT
+    {images: [
+        {
+            // DIFFERENCES 1
+            image1: {x: 100, y: 140, radius: 60}
+        },   
+        {
+            // DIFFERENCES 2
+            image1: {x: 20, y: 75, radius: 60}
+        }
+        
+        ],
+    width: 300, height: 200, imageURL: "./img/difference4.png", original:"./img/original4.png"},
+    
+    // FOOD
+    {images: [
+        {
+            // DIFFERENCES 1
+            image1: {x: 210, y: 110, radius: 60}
+        },   
+        {
+            // DIFFERENCES 2
+            image1: {x: 50, y: 80, radius: 60}
+        }
+        
+        ],
+    width: 300, height: 200, imageURL: "./img/difference5.png", original:"./img/original5.png"},
+      
+    // BUS SIDE VIEW
+    {images: [
+        {
+            // DIFFERENCES 1
+            image1: {x: 180, y: 120, radius: 60}
+        },   
+        {
+            // DIFFERENCES 2
+            image1: {x: 30, y: 30, radius: 60}
+        }
+        
+        ],
+    width: 300, height: 200, imageURL: "./img/difference6.png", original:"./img/original6.png"}
 ];
 
 let differencesCount = 0;
+let score = 0;
+let total = 2;
 
 
-randomizeObjects();
-loadImage();
+
+
 
 function getMousePos(canvas, e) // because canvas and bitmap is diff size
 {
@@ -108,18 +167,27 @@ function isIntersect(point, object)
 
 function loadImage()
 {
-    var tempoQuestion  = differencesCount + 1;
-    document.getElementById("question").textContent = tempoQuestion + "/5";
+    RadmiseImage();
+
+    question.innerHTML = score + "/" + total;
+
+    differencesFound = 0;
+    differencePlayerFound = ["", ""]
     var image = new Image();
     image.src = tempo[differencesCount].imageURL;
-    
+    originalImage.src = tempo[differencesCount].original;
+
+    //correct image
+    var image2 = new Image();
+    image2.src = './img/correct.png';
+
     image.onload = function ()
     {
 
         ctx.clearRect( 0, 0, window.innerWidth,
             window.innerHeight);
 
-        ctx.drawImage(image, 120, 0, tempo[differencesCount].width,
+        ctx.drawImage(image, 0, 0, tempo[differencesCount].width,
             tempo[differencesCount].height);
 
         canvas.onclick = function (e)
@@ -130,43 +198,49 @@ function loadImage()
 
 
 
-            /*ctx.beginPath();
-            ctx.arc(differences[differencesCount].image1.x, differences[differencesCount].image1.y,
-                differences[differencesCount].image1.radius, 0, 2 * Math.PI, false);
-            ctx.strokeStyle = "black";
-            ctx.lineWidth = 5;
-            ctx.stroke();
-
-            ctx.beginPath();
-            ctx.arc(differences[differencesCount].image2.x, differences[differencesCount].image2.y,
-                differences[differencesCount].image2.radius, 0, 2 * Math.PI, false);
-            ctx.strokeStyle = "black";
-            ctx.lineWidth = 5;
-            ctx.stroke();*/
-
-
-            if(isIntersect(mousePos, tempo[differencesCount].image1) ||
-                isIntersect(mousePos, tempo[differencesCount].image2))
+  
+            
+        
+            
+            for(let i = 0; i < tempo[differencesCount].images.length; i++)
             {
-                console.log("correct!")
+                console.log(i);
 
-                ctx.beginPath();
-                ctx.arc(tempo[differencesCount].image1.x, tempo[differencesCount].image1.y,
-                    tempo[differencesCount].image1.radius, 0, 2 * Math.PI, false);
-                ctx.strokeStyle = "black";
-                ctx.lineWidth = 5;
-                ctx.stroke();
 
-                ctx.beginPath();
-                ctx.arc(tempo[differencesCount].image2.x, tempo[differencesCount].image2.y,
-                    tempo[differencesCount].image2.radius, 0, 2 * Math.PI, false);
-                ctx.strokeStyle = "black";
-                ctx.lineWidth = 5;
-                ctx.stroke();
+                //To see all differenet
+                /*ctx.drawImage(image2, differences[differencesCount].images[i].image1.x, differences[differencesCount].images[i].image1.y,
+                    differences[differencesCount].images[i].image1.radius,
+                    differences[differencesCount].images[i].image1.radius);*/
 
-                onCorrect();
 
+                if(isIntersect(mousePos, tempo[differencesCount].images[i].image1) && differencePlayerFound[i] == "")
+                {
+                    console.log("correct!")
+
+                    differencePlayerFound[i] = "found"
+
+                    ctx.drawImage(image2, tempo[differencesCount].images[i].image1.x, tempo[differencesCount].images[i].image1.y,
+                        tempo[differencesCount].images[i].image1.radius,
+                        tempo[differencesCount].images[i].image1.radius)
+                    
+                    differencesFound++;
+                    
+                    if(differencesFound === tempo[differencesCount].images.length)
+                    {
+                        score++;
+                        console.log(score)
+                        tempo.splice(differencesCount, 1)
+                        onCorrect();
+                    }
+                    
+                    break;
+                  
+
+                }
             }
+
+
+            
 
     
         };
@@ -183,29 +257,33 @@ function loadImage()
 
 function onCorrect()
 {
+    var delayInMilliseconds = 1000; //1 second
     
-    if(differencesCount < tempo.length - 1)
+    if(score < total)
     {
-        differencesCount++;
         console.log(differencesCount + " COUNT")
-        console.log(differences.length  + " LEN")
+        console.log(tempo.length  + " LEN")
 
-        var delayInMilliseconds = 1000; //1 second
+        
 
         setTimeout(function() {
-            if(differencesCount > 4){
-                console.log("win");
-                document.getElementById("result_screen").classList.remove("hide");
-            }
-            else{
-                loadImage();
-            }
-
+            loadImage();
         }, delayInMilliseconds);
     }
     else
     {
-        console.log("end")
+        clearInterval(timer);
+        document.querySelector(".result").src = "./img/youWin.png"
+
+        setTimeout(function() {
+            resultScreen.classList.remove("hide")
+            setTimeout(function() {
+                confetti.start();
+                setTimeout(function() {
+                    confetti.stop();
+                },3000)
+            },500)
+        }, delayInMilliseconds);
     }
      
     
@@ -229,35 +307,24 @@ function deleteFromArray(array, name)
     
     array.splice(deleteCount, 1);
 }
-    
-function randomizeObjects()
-{
-    tempo = [];
-    for(let i=0; i < differences.length; i++){
-        tempo.push(differences[i]);
+
+function RadmiseImage(){
+    if(tempo.length == 0){
+        for(let i = 0; i < differences.length; i++){
+            tempo.push(differences[i])
+        }
+        console.log(tempo)
     }
 
-    for(let i = tempo.length - 1; i > 0; i--)
-    {
-        var randomIndex = Math.floor(Math.random() * i);
-        
-        var lastIndex = tempo[i];
-
-
-        tempo[i] = tempo[randomIndex];
-        tempo[randomIndex] = lastIndex;
-        
-    }
-    
-    console.log(tempo);
-
-
-    
-
+    differencesCount = Math.floor(Math.random() * tempo.length);
 }
 
-function reset(){
-    differencesCount = 0;
-    randomizeObjects();
-    loadImage();
+function updateTime(){
+    time --;
+    timerCount.innerHTML = `${time}s`;
+    if(time == 0){
+        clearInterval(timer);
+        document.querySelector(".result").src = "./img/youTried.png"
+        resultScreen.classList.remove("hide")
+    }
 }

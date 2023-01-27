@@ -1,0 +1,74 @@
+/*GamePage*/
+.top{
+    margin: 25px;
+    width: 80%;
+    display: flex;
+	justify-content: space-between;
+}
+
+.score, 
+.question{
+    background-color: white;
+    border-radius: 10px;
+    font-size: 20px;
+    width: 35%;
+	gap: 5px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.score{
+    width: 40%;
+    justify-content: flex-start;
+}
+
+.score-count,
+.question-count{
+    width: 50%;
+    font-size: 30px;
+	display: flex;
+	justify-content: center;
+}
+
+.point1{
+    border-radius: 10px;
+    padding: 10px;
+    height: 100%;
+    width: 40%;
+	font-size: 30px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--fifth);
+}
+
+.image{
+    width: 100%;
+}
+
+.gamePage{
+    gap: 5px;
+    z-index: 0;
+}
+
+.text{
+    color: var(--white);
+    font-size: 30px;
+    margin: 15px 0px;
+}
+
+.originalTop{
+    width: 40%;
+    position: relative;
+    margin-bottom: -20px;
+}
+
+.original,
+#play_area{
+    width: 300px; 
+    height: 200px;
+}
+ 
