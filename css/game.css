@@ -68,7 +68,21 @@
 
 .original,
 #play_area{
-    width: 300px; 
-    height: 200px;
+    width: 70%;
 }
- 
+
+ /*ipad*/
+@media screen and (min-width:768px) and (max-width:1023px) {
+    .text{
+        font-size: 50px;
+        margin: 20px 0px;
+    }
+
+    .score-count, .question-count {
+        font-size: 60px;
+    }
+
+    .image {
+        width: 70%;
+    }
+}

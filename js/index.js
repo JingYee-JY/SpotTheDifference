@@ -85,11 +85,11 @@ const differences = [
     {images: [
         {
             // DIFFERENCES 1
-            image1: {x: 160, y: 130, radius: 60}
+            image1: {x: 75, y: 130, radius: 60}
         },   
         {
             // DIFFERENCES 2
-            image1: {x: 150, y: 60, radius: 60}
+            image1: {x: 160, y: 60, radius: 60}
         }
         
         ],
@@ -99,7 +99,7 @@ const differences = [
     {images: [
         {
             // DIFFERENCES 1
-            image1: {x: 100, y: 140, radius: 60}
+            image1: {x: 220, y: 140, radius: 60}
         },   
         {
             // DIFFERENCES 2
@@ -215,6 +215,8 @@ function loadImage()
 
                 if(isIntersect(mousePos, tempo[differencesCount].images[i].image1) && differencePlayerFound[i] == "")
                 {
+                    console.log(mousePos)
+                    console.log(tempo[differencesCount].images[i].image1.x, tempo[differencesCount].images[i].image1.y)
                     console.log("correct!")
 
                     differencePlayerFound[i] = "found"

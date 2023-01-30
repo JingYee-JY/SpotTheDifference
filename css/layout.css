@@ -249,6 +249,10 @@ body {
         width: 35%;
     }
 
+    .preview{
+        width: 60%;
+    }
+
     .button {
         width: 55%;
     }
@@ -301,7 +305,7 @@ body {
     .instructionPage,
     .finalPage,
     .rotate{
-        width: 370px !important;
+        width: 300px !important;
     }
 
     /*StartPage*/
