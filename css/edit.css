@@ -33,7 +33,7 @@
 }
 
 .start{
-    background-color: var(--backgroundColour2);
+    background-color: var(--buttonBackgroundColor2);
     color: var(--buttonTextColor2);
 }
 
