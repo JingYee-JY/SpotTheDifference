@@ -1,0 +1,78 @@
+/*add here for code changes*/
+
+/*Commonly Changed Items*/
+:root{
+    --backgroundColour:#014598;
+    --buttonBackgroundColor:#FBCE59;
+    --buttonTextColor:#014598;
+    --buttonBackgroundColor2:#014598;
+    --buttonTextColor2:white;
+    --instructionBackgroundColor: #D5F1F1;
+    --textDarkBlueColor:#014598;
+    --gameTopBackground: white;
+    --backgroundColour2:#FBCE59;
+    --scoreTextBackground:#F25528;
+    --borderColor2:#014598;
+    --finalPopUpBackground:white;
+}
+
+/*InstructionPage*/
+.instructionPage{
+    padding-bottom: 0px;
+}
+.instructionBackground{
+    background-image: url("../img/bottom.png");
+    background-size: 100% 100%;
+    display: flex;
+    gap: 50px;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    width: var(--fullsize);
+    height: var(--fullsize);
+}
+
+.start{
+    background-color: var(--backgroundColour2);
+    color: var(--buttonTextColor2);
+}
+
+/*GamePage*/
+.top{
+    justify-content: center;
+}
+
+.text{
+    font-size: 30px;
+    color: var(--textWhiteColor);
+
+}
+
+.orginalPicture{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ori{
+    background-color: #F25528;
+    color: var(--textWhiteColor);
+    font-size: 30px;
+    border-radius: 20px;
+    width: 50%;
+    text-align: center;
+    z-index: 10;
+    position: relative;
+    margin-bottom: -20px;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/*FinalPage*/
+.scoreText{
+    color: var(--textWhiteColor);
+}
+
+.group2{
+    color: #433836;
+}

@@ -1,68 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spot the Difference</title>
+    <title>Document</title>
 
-
-    <link rel="stylesheet" href="./css/layout.css">
-    <link rel="stylesheet" href="./css/game.css">
-
-
+    <!--CSS style & Fonts-->
+    <link rel="stylesheet" href="css/layout.css"/>
+    <link rel="stylesheet" href="css/edit.css"/>
     <link rel="stylesheet" 
     href="https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@300;400;900&display=swap">
+
 </head>
-
 <body>
-
-    <div id="main_screen" class="startPage" w3-include-html="./pages/main_screen.html"></div>
-    
-    <div id="instruction_screen" class="instructionPage hide" w3-include-html="./pages/instruction.html"></div>
-    
-    <div class="gamePage">
-        <div class="top">
-            <div class="question">
-                <p class="question-count">0/0</p>
-            </div>
-            <div class="score">
-                <p class="point1"><img class="image" src="./img/timeLogo.png"></p>
-                <p class="score-count"><b>120s</b></p>
-            </div>
+    <div class="startPage" id="startPage">
+        <img class="title" src="./img/logo.png">
+        <img class="preview" src="./img/visual.png">
+        <div id="play" class="play button">
+            <p>PLAY</p>
         </div>
-
-        <img class="originalTop" src="./img/original.png" alt="">
-        <img class="original" alt="">
-    
-        <div id="title" class="text">
-            <span>Spot the differences</span>
-        </div>
-
-        <canvas width="300" height="200" id="play_area"> </canvas>
-    
     </div>
 
-    <div id="result_screen" class=" finalPage hide" w3-include-html="./pages/result.html"></div>
+    <div class="instructionPage hide" id="instructionPage">
+        <img class="title" src="./img/logo.png">
+        <div class="instructionBackground">
+            <div class="instruction">
+                <p>How to play</p>
+                <div class="details">
+                  <p>
+                    Choose the <br>
+                    correct answer <br>
+                    from the option
+                  </p>
+                </div>
+            </div>
+            <div id="start" class="start button">
+                <p>START GAME</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="gamePage" class="gamePage hide">
+        <div class="top">
+            <div class="question">
+                <p id="question-count" class="question-count">1/5</p>
+            </div>
+            <div class="score hide">
+                <p id="score-count" class="score-count"><b>0</b></p>
+                <p class="point"><b>Pt</b></p>
+            </div>
+        </div>
+        <div class="game">
+            <!--Add game code here-->
+            <div class="orginalPicture">
+                <div class="ori">
+                    Orignal
+                </div>
+                <canvas width="300" height="200" id="answer_area"> </canvas>
+            </div>
+    
+            <div id="title" class="text">
+                <span>Spot the differences</span>
+            </div>
+
+            <canvas width="300" height="200" id="play_area"> </canvas>
+        </div>
+    </div>
+
+    <div class="popUp hide" id="popUp">
+        <div class="background">
+            <img class="mark" id="mark">
+            <p class="checkAnswer" id="checkAnswer"></p>
+            <p class="showAnswer" id="showAnswer">The correct <br> answer are:</p>
+            <img id="correctAnswer" class="correctAnswer">
+        </div>
+    </div>
+
+    <div class="finalPage hide" id="finalPage">
+        <div class="wholeGroup">
+            <div class="group1">
+                    <img id="medal" class="medal" src="./img/win.png">
+                    <div id="scoreText" class="scoreText">
+                </div>
+            </div>
+            <div class="group2">
+                <div id="words1" class="words1">Your score</div>
+                <div id="words2" class="words2"></div>
+            </div>
+        </div>
+        <div class="buttons">
+            <img class="again roundedButton" id="again" src="./img/again.svg">
+            <img class="home roundedButton" id="home" src="./img/home.svg">
+        </div>
+    </div>
 
     <img class="rotate" src="./img/rotate.png">
-
-    <script src="js/confetti.js"></script>
-    <script src="js/index.js"></script>
-
+    
+    <audio id="click" src="sound/click.wav"></audio>
+    <audio id="correct" src="./sound/correct.wav"></audio>
+    <audio id="lose" src="./sound/lose.wav"></audio>
+    <audio id="wrong" src="./sound/wrong.wav"></audio>
+    <audio id="clap" src="./sound/clap.wav"></audio>
+    
+    <script src="./script/script.js"></script>
+    <script src="./script/confetti.js"></script>
 </body>
-
-
-<script src="js/w3.js"></script>
-<script>
-    //to bring in other HTML on the fly into this page
-    w3.includeHTML();
-</script>
-
-
-
-<script type="text/javascript" src="https://rawgithub.com/craftyjs/Crafty/release/dist/crafty.js"></script>
-
-
 </html>
