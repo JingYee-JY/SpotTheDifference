@@ -340,7 +340,7 @@ if useing this change the first version css to this*/
 /*mobile*/
 @media screen and (max-width: 767px){
     .preview{
-        max-height: 350px;
+        max-height: 300px;
     }
 }
 

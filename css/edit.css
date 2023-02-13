@@ -37,6 +37,13 @@
     color: var(--buttonTextColor2);
 }
 
+.bottom{
+    position: absolute;
+    width: 35%;
+    height: auto;
+    bottom: 0;
+}
+
 /*GamePage*/
 .top{
     justify-content: center;
